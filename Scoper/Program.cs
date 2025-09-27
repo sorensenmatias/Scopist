@@ -39,12 +39,3 @@ public class MyScopedService
         return 3;
     }
 }
-
-public class ScopedResolver<T> 
-    where T : notnull
-{
-    public T Resolve(IServiceScope serviceScope)
-    {
-        return serviceScope.ServiceProvider.GetRequiredService<T>();
-    }
-}
