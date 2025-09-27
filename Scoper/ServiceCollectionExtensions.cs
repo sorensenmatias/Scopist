@@ -9,4 +9,13 @@ public static class ServiceCollectionExtensions
         serviceCollection.AddSingleton(typeof(ScopedResolver<>));
         return serviceCollection;
     }
+
+    public static ServiceProvider BuildAndValidateServiceProvider(IServiceCollection serviceCollection)
+    {
+        return serviceCollection.BuildServiceProvider(new ServiceProviderOptions()
+        {
+            ValidateOnBuild = true,
+            ValidateScopes = true
+        });
+    }
 }
