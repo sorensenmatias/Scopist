@@ -1,34 +1,38 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Xunit;
 
-namespace Scoper;
+namespace Scoper.Tests;
 
-public static class Program
+public class ServiceTests
 {
-    public static void Main(string[] args)
+    [Fact]
+    public void SingletonServiceWithScopedDependency_CanBeResolvedAndExecuted()
     {
+        // Arrange
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddScoper();
 
         serviceCollection.AddSingleton<MyService>();
         serviceCollection.AddScoped<MyScopedService>();
 
-        var serviceProvider = serviceCollection.BuildServiceProvider(new ServiceProviderOptions()
-            { ValidateOnBuild = true, ValidateScopes = true });
+        var serviceProvider = ServiceCollectionExtensions.BuildAndValidateServiceProvider(serviceCollection);
 
+        // Act
         var myService = serviceProvider.GetRequiredService<MyService>();
         
-        myService.Execute();
+        // Assert
+        myService.GetResult().Should().Be(3);
     }
 }
 
 public class MyService(ScopedResolver<MyScopedService> myScopedService, IServiceScopeFactory serviceScopeFactory)
 {
-    public void Execute()
+    public int GetResult()
     {
         var scope = serviceScopeFactory.CreateScope();
         var scopedService = myScopedService.Resolve(scope);
-        Console.WriteLine(scopedService.GetValue());
+        return scopedService.GetValue();
     }
 }
 
