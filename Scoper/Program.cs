@@ -40,15 +40,6 @@ public class MyScopedService
     }
 }
 
-public static class ServiceCollectionExtensions
-{
-    public static IServiceCollection AddScoper(this IServiceCollection serviceCollection)
-    {
-        serviceCollection.AddSingleton(typeof(ScopedResolver<>));
-        return serviceCollection;
-    }
-}
-
 public class ScopedResolver<T> 
     where T : notnull
 {
