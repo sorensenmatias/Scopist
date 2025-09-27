@@ -4,11 +4,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>Scoper</PackageId>
+    <PackageId>Scopist</PackageId>
     <Authors>Matias Elisberg Sørensen</Authors>
-    <Description>Scoper is a lightweight .NET library that simplifies resolving scoped services. It provides a generic ScopedResolver&lt;T&gt; for type-safe access to services from an IServiceScope, ideal for background jobs, hosted services, and scenarios where constructor injection isn’t possible.</Description>
+    <Description>Scopist is a lightweight .NET library that simplifies resolving scoped services. It provides a generic ScopedResolver&lt;T&gt; for type-safe access to services from an IServiceScope, ideal for background jobs, hosted services, and scenarios where constructor injection isn’t possible.</Description>
     <PackageTags>dependency-injection;scoped;service-provider;di;dotnet;aspnetcore;ioc</PackageTags>
-    <RepositoryUrl>https://github.com/sorensenmatias/Scoper</RepositoryUrl>
+    <RepositoryUrl>https://github.com/sorensenmatias/Scopist</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 

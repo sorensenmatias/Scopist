@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scoper", "Scoper\Scoper.csproj", "{3B3E070D-C604-44CA-878E-22340A9E932A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scopist", "Scopist\Scopist.csproj", "{3B3E070D-C604-44CA-878E-22340A9E932A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scoper.Tests", "Scoper.Tests\Scoper.Tests.csproj", "{08BE0A3B-52E6-BC7C-22D2-A1FD507D087A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scopist.Tests", "Scopist.Tests\Scopist.Tests.csproj", "{08BE0A3B-52E6-BC7C-22D2-A1FD507D087A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject

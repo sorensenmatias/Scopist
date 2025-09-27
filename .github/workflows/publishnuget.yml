@@ -18,16 +18,16 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore
-        run: dotnet restore ./Scoper.sln
+        run: dotnet restore ./Scopist.sln
 
       - name: Build
-        run: dotnet build ./Scoper.sln --configuration Release --no-restore
+        run: dotnet build ./Scopist.sln --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test ./Scoper.sln --configuration Release --no-restore
+        run: dotnet test ./Scopist.sln --configuration Release --no-restore
 
       - name: Pack
-        run: dotnet pack ./Scoper.sln --configuration Release --no-build -p:PackageVersion=${GITHUB_REF_NAME#v} -o ./artifacts
+        run: dotnet pack ./Scopist.sln --configuration Release --no-build -p:PackageVersion=${GITHUB_REF_NAME#v} -o ./artifacts
 
       - name: Push to NuGet
         run: dotnet nuget push ./artifacts/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json

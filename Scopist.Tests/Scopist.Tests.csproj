@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Scoper\Scoper.csproj" />
+    <ProjectReference Include="..\Scopist\Scopist.csproj" />
   </ItemGroup>
 
 </Project>

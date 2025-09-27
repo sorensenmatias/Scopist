@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Scoper.Tests;
+namespace Scopist.Tests;
 
 public class ServiceTests
 {
@@ -11,7 +11,7 @@ public class ServiceTests
     {
         // Arrange
         var serviceCollection = new ServiceCollection();
-        serviceCollection.AddScoper();
+        serviceCollection.AddScopist();
 
         serviceCollection.AddSingleton<MyService>();
         serviceCollection.AddScoped<MyScopedService>();

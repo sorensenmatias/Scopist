@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Scoper;
+namespace Scopist;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddScoper(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddScopist(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddSingleton(typeof(ScopedResolver<>));
         return serviceCollection;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Scoper;
+namespace Scopist;
 
 public class ScopedResolver<T> 
     where T : notnull
