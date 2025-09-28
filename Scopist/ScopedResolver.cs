@@ -2,7 +2,7 @@
 
 namespace Scopist;
 
-public class ScopedResolver<T> 
+internal class ScopedResolver<T> : IScopedResolver<T>
     where T : notnull
 {
     /// <summary>

@@ -26,7 +26,7 @@ public class ServiceTests
     }
 }
 
-public class MyService(ScopedResolver<MyScopedService> myScopedService, IServiceScopeFactory serviceScopeFactory)
+public class MyService(IScopedResolver<MyScopedService> myScopedService, IServiceScopeFactory serviceScopeFactory)
 {
     public int GetResult()
     {

@@ -6,7 +6,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddScopist(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton(typeof(ScopedResolver<>));
+        serviceCollection.AddSingleton(typeof(IScopedResolver<>), typeof(ScopedResolver<>));
         return serviceCollection;
     }
 
