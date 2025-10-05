@@ -55,7 +55,7 @@ public class ScopistChecker_HostTests
             await host.StopAsync();
         };
         
-        await act.Should().ThrowExactlyAsync<InvalidOperationException>();
+        await act.Should().ThrowExactlyAsync<ScopistValidationException>();
     }
 
     public class MyService(IScopedResolver<ScopedService> myScopedService);

@@ -33,8 +33,7 @@ internal class ScopistChecker(ScopistServicesCollection scopistServicesCollectio
 
         if (errors.Count > 0)
         {
-            var message = "Scopist validation failed:\n" + string.Join("\n", errors);
-            throw new InvalidOperationException(message);
+            throw new ScopistValidationException(errors);
         }
     }
 

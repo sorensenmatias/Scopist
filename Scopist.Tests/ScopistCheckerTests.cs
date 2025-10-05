@@ -36,7 +36,7 @@ public class ScopistCheckerTests
         var serviceProvider = services.BuildAndValidateServiceProvider();
 
         var act = () => serviceProvider.ValidateScopist();
-        act.Should().Throw<InvalidOperationException>()
+        act.Should().ThrowExactly<ScopistValidationException>()
             .WithMessage("*must be registered as Scoped*");
     }
 
@@ -52,7 +52,7 @@ public class ScopistCheckerTests
         var serviceProvider = services.BuildAndValidateServiceProvider();
 
         var act = () => serviceProvider.ValidateScopist();
-        act.Should().Throw<InvalidOperationException>()
+        act.Should().ThrowExactly<ScopistValidationException>()
             .WithMessage("*must be registered as Scoped*");
     }
 
