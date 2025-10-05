@@ -66,6 +66,27 @@ public class ScopistCheckerTests
         
     }
 
+    [Fact]
+    public void ServiceWithUnregisteredDependency_ThrowsValidationError()
+    {
+        var services = new ServiceCollection();
+        services.AddScopist();
+
+        services.AddSingleton<MyService>();
+
+        var serviceProvider = services.BuildAndValidateServiceProvider();
+
+        var act = () => serviceProvider.ValidateScopist();
+        act.Should()
+            .ThrowExactly<ScopistValidationException>()
+            .WithMessage("""
+                         Scopist validation failed:
+                         No registration found for Scopist.Tests.ScopistCheckerTests+ScopedService. IScopedResolver<ScopedService> requires ScopedService to be registered as Scoped.
+                         """);
+
+
+    }
+
     public class MyService(IScopedResolver<ScopedService> myScopedService);
 
     public class MyService2(IScopedResolver<SingletonService> myScopedService);
