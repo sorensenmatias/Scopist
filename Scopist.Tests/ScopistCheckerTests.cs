@@ -62,8 +62,6 @@ public class ScopistCheckerTests
                          Scopist validation failed:
                          Service Scopist.Tests.ScopistCheckerTests+SingletonService must be registered as Scoped for use with IScopedResolver<SingletonService>. Found: Singleton.
                          """);
-        
-        
     }
 
     [Fact]
@@ -83,8 +81,6 @@ public class ScopistCheckerTests
                          Scopist validation failed:
                          No registration found for Scopist.Tests.ScopistCheckerTests+ScopedService. IScopedResolver<ScopedService> requires ScopedService to be registered as Scoped.
                          """);
-
-
     }
 
     public class MyService(IScopedResolver<ScopedService> myScopedService);
