@@ -36,8 +36,12 @@ public class ScopistCheckerTests
         var serviceProvider = services.BuildAndValidateServiceProvider();
 
         var act = () => serviceProvider.ValidateScopist();
-        act.Should().ThrowExactly<ScopistValidationException>()
-            .WithMessage("*must be registered as Scoped*");
+        act.Should()
+            .ThrowExactly<ScopistValidationException>()
+            .WithMessage("""
+                         Scopist validation failed:
+                         Service Scopist.Tests.ScopistCheckerTests+SingletonService must be registered as Scoped for use with IScopedResolver<SingletonService>. Found: Singleton.
+                         """);
     }
 
     [Fact]
@@ -52,8 +56,14 @@ public class ScopistCheckerTests
         var serviceProvider = services.BuildAndValidateServiceProvider();
 
         var act = () => serviceProvider.ValidateScopist();
-        act.Should().ThrowExactly<ScopistValidationException>()
-            .WithMessage("*must be registered as Scoped*");
+        act.Should()
+            .ThrowExactly<ScopistValidationException>()
+            .WithMessage("""
+                         Scopist validation failed:
+                         Service Scopist.Tests.ScopistCheckerTests+SingletonService must be registered as Scoped for use with IScopedResolver<SingletonService>. Found: Singleton.
+                         """);
+        
+        
     }
 
     public class MyService(IScopedResolver<ScopedService> myScopedService);

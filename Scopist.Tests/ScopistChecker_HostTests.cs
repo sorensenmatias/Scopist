@@ -55,7 +55,14 @@ public class ScopistChecker_HostTests
             await host.StopAsync();
         };
         
-        await act.Should().ThrowExactlyAsync<ScopistValidationException>();
+        await act.Should()
+            .ThrowExactlyAsync<ScopistValidationException>()
+            .WithMessage(
+            """
+            Scopist validation failed:
+            Service Scopist.Tests.ScopistChecker_HostTests+SingletonService must be registered as Scoped for use with IScopedResolver<SingletonService>. Found: Singleton.
+            """
+            );
     }
 
     public class MyService(IScopedResolver<ScopedService> myScopedService);
