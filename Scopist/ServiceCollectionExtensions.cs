@@ -27,6 +27,7 @@ public static class ServiceCollectionExtensions
         {
             var collection = sp.GetRequiredService<ScopistServicesCollection>();
             var scopistChecker = new ScopistChecker(collection);
+            scopistChecker.Validate();
             return scopistChecker;
         });
 
