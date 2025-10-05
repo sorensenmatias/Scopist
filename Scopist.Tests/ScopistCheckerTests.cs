@@ -8,14 +8,13 @@ namespace Scopist.Tests;
 public class ScopistCheckerTests
 {
     [Fact]
-    public void AddScopistChecker_Allows_Scoped_Targets()
+    public void SingletonServiceWithScopedDependency_Works()
     {
         var services = new ServiceCollection();
         services.AddScopist();
 
-        services.AddSingleton<MyService>();
+        services.AddSingleton<SingletonServiceWithScopedDependency>();
         services.AddScoped<ScopedService>();
-        services.AddSingleton<SingletonService>();
 
         var serviceProvider = services.BuildAndValidateServiceProvider();
 
@@ -24,33 +23,12 @@ public class ScopistCheckerTests
     }
 
     [Fact]
-    public void AddScopistChecker_Throws_For_NonScoped_Targets()
+    public void ServiceWithWrongLifetime_ThrowsValidationError()
     {
         var services = new ServiceCollection();
         services.AddScopist();
 
-        services.AddSingleton<MyService2>();
-        services.AddScoped<ScopedService>();
-        services.AddSingleton<SingletonService>();
-
-        var serviceProvider = services.BuildAndValidateServiceProvider();
-
-        var act = () => serviceProvider.ValidateScopist();
-        act.Should()
-            .ThrowExactly<ScopistValidationException>()
-            .WithMessage("""
-                         Scopist validation failed:
-                         Service Scopist.Tests.ScopistCheckerTests+SingletonService must be registered as Scoped for use with IScopedResolver<SingletonService>. Found: Singleton.
-                         """);
-    }
-
-    [Fact]
-    public void ValidateScopist_Manual_Call_Throws_For_NonScoped_Targets()
-    {
-        var services = new ServiceCollection();
-        services.AddScopist();
-
-        services.AddSingleton<MyService2>();
+        services.AddSingleton<SingletonServiceWithSingletonDependency>();
         services.AddSingleton<SingletonService>();
 
         var serviceProvider = services.BuildAndValidateServiceProvider();
@@ -70,7 +48,7 @@ public class ScopistCheckerTests
         var services = new ServiceCollection();
         services.AddScopist();
 
-        services.AddSingleton<MyService>();
+        services.AddSingleton<SingletonServiceWithScopedDependency>();
 
         var serviceProvider = services.BuildAndValidateServiceProvider();
 
@@ -83,9 +61,9 @@ public class ScopistCheckerTests
                          """);
     }
 
-    public class MyService(IScopedResolver<ScopedService> myScopedService);
+    public class SingletonServiceWithScopedDependency(IScopedResolver<ScopedService> myScopedService);
 
-    public class MyService2(IScopedResolver<SingletonService> myScopedService);
+    public class SingletonServiceWithSingletonDependency(IScopedResolver<SingletonService> myScopedService);
 
     public class SingletonService { }
 
