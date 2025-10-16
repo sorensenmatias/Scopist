@@ -22,7 +22,7 @@ dotnet add package Scopist
 
 ---
 
-## TL;DR (60 seconds)
+## TL;DR
 
 1) Register Scopist:
 
